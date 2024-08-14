@@ -6,6 +6,7 @@ import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import 'filepond/dist/filepond.min.css';
 import InputAudio from '../../components/InputAudio';
+import { useNavigate } from 'react-router-dom';
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 export default function MusicAddUpdate() {
@@ -18,6 +19,9 @@ export default function MusicAddUpdate() {
   const [category, setCatogery] = useState('');
   const [album, setAblum] = useState('');
   const [duration, setDuration] = useState('');
+
+  // navigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const currentTime = new Date().toISOString().split('T')[0];
@@ -52,6 +56,13 @@ export default function MusicAddUpdate() {
     if (!name || !singer || !category || !audioSrc) {
       return;
     }
+  };
+
+  /**
+   * go to list music
+   */
+  const navigateListMusic = () => {
+    navigate('/admin/musics');
   };
   return (
     <form className="screen-container p-10" onSubmit={handleSubmit}>
@@ -134,7 +145,9 @@ export default function MusicAddUpdate() {
         </div>
       </div>
       <div className="text-right mt-40">
-        <span className=" bg-yellow-500 text-white py-3 px-6 rounded mr-10 cursor-pointer">Back</span>
+        <span className=" bg-yellow-500 text-white py-3 px-6 rounded mr-10 cursor-pointer" onClick={navigateListMusic}>
+          Back
+        </span>
         <button type="submit" className=" bg-blue-500 text-white py-2 px-4 rounded cursor-pointer">
           Submit
         </button>

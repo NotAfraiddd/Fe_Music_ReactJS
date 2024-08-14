@@ -83,18 +83,21 @@ export default function Explore() {
             })}
           </BaseSlider>
         </div>
-        <div className="overflow-hidden w-[500px] h-[300px] overflow-y-auto border-white border-2 no-scrollbar">
-          {dataMusic.map((item, index) => (
-            <div
-              key={index}
-              className={`mt-2 flex items-center text-white hover:bg-slate-500 hover:text-[#38bdf8] cursor-pointer `}
-            >
-              <div className="w-[20%] text-center">
-                <img src={example3} alt="" className="w-10 h-10 mx-auto" />
+        <div className="flex flex-col gap-3">
+          <span>Recommended Music List</span>
+          <div className="overflow-hidden w-[500px] h-[450px] overflow-y-auto border-white border-2 no-scrollbar">
+            {dataMusic.map((item, index) => (
+              <div
+                key={index}
+                className={`mt-2 flex items-center text-white hover:bg-slate-500 hover:text-[#38bdf8] cursor-pointer my-5`}
+              >
+                <div className="w-[20%] text-center">
+                  <img src={example3} alt="" className="w-10 h-10 mx-auto" />
+                </div>
+                <div className="w-[80%] text-left">{item.name}</div>
               </div>
-              <div className="w-[80%] text-left">{item.name}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

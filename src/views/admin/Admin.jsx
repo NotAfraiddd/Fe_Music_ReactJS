@@ -30,21 +30,21 @@ export default function Admin() {
     },
   ];
   const dataMusic = [
-    { id: 1, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 2, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 3, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 4, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 5, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 6, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 7, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 8, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 9, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 10, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 11, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 12, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 13, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 14, name: 'chibao', author: 'author', url: 'chibao' },
-    { id: 15, name: 'chibao', author: 'author', url: 'chibao' },
+    { id: 1, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 2, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 3, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 4, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 5, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 6, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 7, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 8, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 9, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 10, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 11, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 12, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 13, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 14, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
+    { id: 15, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
   ];
   const inputSearchDebounce = useDebounce(inputSearch, 300);
   const navigate = useNavigate();
@@ -86,8 +86,10 @@ export default function Admin() {
             <thead className="sticky top-0 h-12 text-white bg-slate-600">
               <tr className="h-12">
                 <th className="w-[10%]">#</th>
-                <th className="w-[60%]">Song</th>
-                <th className="w-[20%]">Artist</th>
+                <th className="w-[30%]">Song</th>
+                <th className="w-[20%]">Singer</th>
+                <th className="w-[20%]">Album</th>
+                <th className="w-[20%]">Release Year</th>
                 <th className="w-[10%]"></th>
               </tr>
             </thead>
@@ -99,8 +101,10 @@ export default function Admin() {
                   onClick={() => handleNavigateDetail(item)} // using callback when having argument
                 >
                   <td className="w-[10%] text-center">{item.id}</td>
-                  <td className="w-[60%] text-center">{item.name}</td>
+                  <td className="w-[30%] text-center">{item.name}</td>
                   <td className="w-[20%] text-center">{item.author}</td>
+                  <td className="w-[20%] text-center">{item.ablum}</td>
+                  <td className="w-[20%] text-center">{item.release_year}</td>
                   <td className="w-[10%] text-center">
                     <a href={item.url}></a>
                   </td>

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Queue.css';
-export default function Queue({ tracks, setCurrrentTrack }) {
+
+export default function Queue({ tracks, setCurrrentTrack, currrentIndex }) {
   const formatDuration = (seconds) => {
     if (!seconds) return '0:00';
     const minutes = Math.floor(seconds / 60);
@@ -18,8 +19,17 @@ export default function Queue({ tracks, setCurrrentTrack }) {
               onClick={() => setCurrrentTrack(index)}
               className="queue-item cursor-pointer flex justify-between w-full px-1 text-sm text-white gap-2"
             >
-              <p className="track-name text-ellipsis w-[75%]">{track?.name}</p>
-              <p>{formatDuration(track?.duration)}</p>
+              {currrentIndex === index ? (
+                <>
+                  <i className="track-name text-ellipsis w-[75%] text-base">{track?.name}</i>
+                  <i className="text-base">{formatDuration(track?.duration)}</i>
+                </>
+              ) : (
+                <>
+                  <p className="track-name text-ellipsis w-[75%]">{track?.name}</p>
+                  <p>{formatDuration(track?.duration)}</p>
+                </>
+              )}
             </div>
           ))}
         </div>
