@@ -10,8 +10,6 @@ export default function AudioPlayer({ currentTrack, currentIndex, setCurrentInde
 
   const audioRef = useRef(new Audio(total[currentIndex]?.url));
 
-  console.log(currentTrack);
-
   const intervalRef = useRef();
   const isReady = useRef(false);
 

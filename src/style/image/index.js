@@ -5,5 +5,7 @@ import example5 from './example5.jpg';
 import example6 from './example6.jpg';
 import example from './example.jpg';
 import search from './search.svg';
+import pencil from './pencil.svg';
+import cancel from './cancel.svg';
 
-export { search, example, example2, example3, example4, example5, example6 };
+export { cancel, pencil, search, example, example2, example3, example4, example5, example6 };

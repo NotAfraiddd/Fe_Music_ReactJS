@@ -5,6 +5,8 @@ import Player from '../player/Player';
 import Explore from '../explore/Explore';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './Home.css';
+import Admin from '../admin/Admin';
+import MusicAddUpdate from '../Music/MusicAddUpdate';
 export default function Home() {
   useEffect(() => {
     window.location.hash = '';
@@ -17,6 +19,9 @@ export default function Home() {
           <Route path="/" element={<Library />} />
           <Route path="/player" element={<Player />} />
           <Route path="/explore" element={<Explore />} />
+          <Route path="/admin/musics" element={<Admin />} />
+          <Route path="/admin/music/add" element={<MusicAddUpdate />} />
+          <Route path="/admin/music/:musicId" element={<MusicAddUpdate />} />
         </Routes>
       </div>
     </Router>
