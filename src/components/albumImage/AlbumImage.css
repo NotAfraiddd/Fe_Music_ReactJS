@@ -1,0 +1,17 @@
+.albumImage-art,
+.albumImage-shadow {
+  border-radius: 30px;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.albumImage {
+  z-index: 1;
+}
+
+.albumImage-shadow {
+  z-index: -1;
+  top: 20px;
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+}

@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url(./shared/globalStyles.css);
+body {
+  margin: 0;
+  font-family: CircularSpotifyText-Medium;
+  box-sizing: border-box;
+}

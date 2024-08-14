@@ -1,0 +1,16 @@
+.queue-container {
+  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #3e61d2 40px),
+    repeating-linear-gradient(#4767d055, #4767d0);
+}
+
+.queue-item {
+  transition: all 0.2s ease;
+}
+
+.queue-item:hover {
+  transform: scale(0.95);
+}
+
+.queue-list::-webkit-scrollbar {
+  display: none;
+}

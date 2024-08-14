@@ -1,0 +1,20 @@
+.albuminfo-card p {
+  margin: 5px auto !important;
+}
+
+.marquee {
+  white-space: nowrap;
+  display: inline-block;
+  animation: marquee 12s linear infinite;
+  padding-left: 100%;
+}
+
+/* animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

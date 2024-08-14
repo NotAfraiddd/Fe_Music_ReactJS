@@ -1,0 +1,28 @@
+.screen-container {
+  width: calc(100% - 100px);
+  height: 100%;
+  background-color: #1e2a3e;
+  border-radius: 30px;
+  opacity: 1;
+  background-image: repeating-radial-gradient(circle at center left, transparent 0, #233656 100px),
+    repeating-linear-gradient(#1e2a3e55, #1e2a3e);
+}
+
+@font-face {
+  font-family: CircularSpotifyText-Black;
+  src: url('../style/fonts/CircularSpotifyText-Black.otf');
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: CircularSpotifyText-Bold;
+  src: url('../style/fonts/CircularSpotifyText-Bold.otf');
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: CircularSpotifyText-Medium;
+  src: url('../style/fonts/CircularSpotifyText-Medium.otf');
+  font-style: normal;
+  font-weight: normal;
+}

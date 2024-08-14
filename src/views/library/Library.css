@@ -1,0 +1,37 @@
+.playlist-card {
+  padding: 4%;
+  margin-bottom: 2%;
+  background: rgb(30, 42, 62);
+  background: linear-gradient(75deg, rgb(40, 58, 88) 0%, rgba(54, 69, 98, 0) 100%);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.playlist-card:hover {
+  transform: scale(1.02);
+}
+
+.playlist-card:hover .playlist-fade {
+  opacity: 1;
+}
+
+.playlist-title {
+  margin: 10px 0px 10px;
+}
+
+.playlist-image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 15px;
+}
+
+.playlist-fade {
+  border-radius: 20px;
+  padding: 4%;
+}
+
+.playlist-fade:hover {
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(180deg, rgba(54, 69, 98, 0) 10%, rgba(54, 69, 98, 1) 100%);
+  transform: scale(1.02);
+}
