@@ -108,9 +108,14 @@ export default function MusicAddUpdate() {
           onupdatefiles={setFiles}
           allowMultiple={true}
           maxFiles={1}
-          server="/api/upload-image"
+          server={{
+            process: 'http://localhost:4000/api/image/upload',
+            revert: 'http://localhost:4000/api/image/revert',
+            load: 'http://localhost:4000/api/image/load',
+          }}
           name="files"
-          labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+          acceptedFileTypes={['image/jpeg', 'image/png', 'image/gif']}
+          labelIdle='Drag & Drop your images or <span class="filepond--label-action">Browse</span>'
         />
       </div>
       <div className="mt-10 flex items-start flex-wrap gap-10">
@@ -137,7 +142,21 @@ export default function MusicAddUpdate() {
           <span className="text-white">
             File music <span className="text-red-500">( * )</span>
           </span>
-          <InputAudio dataProp={audioSrc} hideChoose={true} onValueAudio={handleValueAudio} required={true} />
+          <FilePond
+            files={audioSrc}
+            onupdatefiles={handleValueAudio}
+            allowMultiple={true}
+            maxFiles={1}
+            server={{
+              process: 'http://localhost:4000/api/audio/upload',
+              revert: 'http://localhost:4000/api/audio/revert',
+              load: 'http://localhost:4000/api/audio/load',
+            }}
+            name="audios"
+            acceptedFileTypes={['audio/mp3']}
+            labelIdle='Drag & Drop your audio or <span class="filepond--label-action">Browse</span>'
+            required={true}
+          />
         </div>
         <div className="flex flex-col w-1/3">
           <span className="text-white">Duration</span>
