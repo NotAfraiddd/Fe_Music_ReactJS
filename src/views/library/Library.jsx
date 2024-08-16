@@ -47,6 +47,11 @@ export default function Library() {
     navigate('/player', { state: { id: id } });
   };
 
+  /**
+   * handle update name of list
+   * @param {*} id 
+   * @param {*} event 
+   */
   const handleEditNameFavoriteMusic = (id, event) => {
     event.stopPropagation();
     if (editId === id) {

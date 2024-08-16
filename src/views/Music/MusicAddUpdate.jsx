@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './MusicAddUpdate.css';
-import { FilePond, File, registerPlugin } from 'react-filepond';
+import { FilePond, registerPlugin } from 'react-filepond';
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import 'filepond/dist/filepond.min.css';
-import InputAudio from '../../components/InputAudio';
 import { useNavigate } from 'react-router-dom';
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
