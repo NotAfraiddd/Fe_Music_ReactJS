@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactSearchBox from 'react-search-box';
 import './Admin.css';
 import useDebounce from '../../utils/useDebounce';
 import { useNavigate } from 'react-router-dom';
+import { getListTracks } from '../../apis/track';
+import moment from 'moment';
 
 export default function Admin() {
   const [inputSearch, setInputSearch] = useState();
+  const [dataMusic, setDataMusic] = useState([]);
 
   const data = [
     {
@@ -29,25 +32,35 @@ export default function Admin() {
       value: 'Karius',
     },
   ];
-  const dataMusic = [
-    { id: 1, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 2, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 3, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 4, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 5, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 6, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 7, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 8, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 9, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 10, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 11, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 12, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 13, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 14, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-    { id: 15, name: 'chibao', author: 'author', url: 'chibao', ablum: 'huhu', release_year: 2012 },
-  ];
   const inputSearchDebounce = useDebounce(inputSearch, 300);
   const navigate = useNavigate();
+
+  /**
+   * get list track
+   */
+  const getListAllTracks = async () => {
+    try {
+      const res = await getListTracks();
+      if (res) {
+        const listTracks = res.map((item) => ({
+          id: item?.id,
+          name: item?.title,
+          author: item?.singer,
+          ablum: item?.ablum,
+          release_year: item?.release_year ? moment(item?.release_year).format('DD/MM/YYYY') : "",
+
+        }));
+
+        setDataMusic(listTracks);
+      }
+    } catch (error) {
+      console.error('Error fetching tracks:', error);
+    }
+  };
+
+  useEffect(() => {
+    getListAllTracks();
+  }, []);
 
   /**
    * go to detail music

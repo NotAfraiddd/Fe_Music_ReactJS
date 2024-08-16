@@ -1,36 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Library.css';
 import { IconContext } from 'react-icons';
 import { AiFillPlayCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import { cancel, example4, example5, example6, pencil } from '../../style/image';
+import { cancel, pencil } from '../../style/image';
+import { getListTracksByUserID } from '../../apis/playlist';
+import { admin } from '../../constant';
 
 export default function Library() {
-  const initialList = [
-    {
-      id: 1,
-      image: example4,
-      name: 'an com',
-      total: 3,
-    },
-    {
-      id: 2,
-      image: example5,
-      name: 'Một triêu like',
-      total: 3,
-    },
-    {
-      id: 3,
-      image: example6,
-      name: 'Mdoi',
-      total: 3,
-    },
-  ];
-
   const navigate = useNavigate();
-  const [listMusc, setListMusc] = useState(initialList);
+  const [listMusic, setListMusc] = useState([]);
   const [editId, setEditId] = useState(null);
   const [name, setName] = useState('');
+
+  /**
+   * get list of user
+   * @param {*} user_id 
+   */
+  const getListTracks = async (user_id) => {
+    try {
+      const res = await getListTracksByUserID(user_id);
+      if (res) {
+        const newMusicList = res.playlists.map((item) => ({
+          id: item?._id,
+          image: item?.playlist_tracks[0].track.cover_image,
+          name: item?.name,
+          total: item?.playlist_tracks.length,
+        }));
+        setListMusc(newMusicList);
+      }
+    } catch (error) {
+      console.error('Error fetching tracks:', error);
+    }
+  }
+
+  useEffect(() => {
+      getListTracks(admin.id);
+  }, []);
+
 
   /**
    * navigate player
@@ -46,7 +53,7 @@ export default function Library() {
       setEditId(null);
     } else {
       setEditId(id);
-      setName(listMusc.find((item) => item.id === id).name);
+      setName(listMusic.find((item) => item.id === id).name);
     }
   };
 
@@ -74,7 +81,7 @@ export default function Library() {
   return (
     <div className="screen-container">
       <div className="library-body overflow-y-auto grid justify-items-center gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 p-[3%] w-full">
-        {listMusc?.map((item) => (
+        {listMusic?.map((item) => (
           <div
             className="playlist-card relative border-white bg-primaryBorder rounded-[20px] border w-[75%]"
             key={item.id}
@@ -85,7 +92,7 @@ export default function Library() {
               {editId === item.id ? (
                 <input
                   type="text"
-                  className="focus-within:outline-none w-32 playlist-title"
+                  className="focus-within:outline-none w-[100px] playlist-title"
                   value={name}
                   onChange={handleInputNameChange}
                   onClick={(e) => e.stopPropagation()}
@@ -105,7 +112,7 @@ export default function Library() {
             <span className="playlist-subtitle text-sm text-[#c4d0e37c]">{item.total} Songs</span>
             {editId === item.id && (
               <span
-                className="bg-blue-500 text-white px-3 py-1 rounded-xl ml-5"
+                className="bg-blue-500 text-white px-3 py-1 rounded-xl ml-4"
                 onClick={(e) => handleUpdate(item.id, e)}
               >
                 Update

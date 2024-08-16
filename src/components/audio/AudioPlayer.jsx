@@ -78,14 +78,14 @@ export default function AudioPlayer({ currentTrack, currentIndex, setCurrentInde
         <ProcessCircle
           percentage={currentPercentage}
           isPlaying={isPlaying}
-          image={currentTrack.album[currentIndex]?.image}
+          image={currentTrack?.album[currentIndex]?.image}
           size={300}
           color="#34fede"
         />
       </div>
       <div className="player-body__right flex justify-around items-center flex-col w-3/5">
         <p className="song-title text-center text-[58px] font-bold text-[#c4d0e3] overflow-hidden text-ellipsis line-clamp-2">
-          {currentTrack.album[currentIndex]?.name}
+          {currentTrack?.album[currentIndex]?.name}
         </p>
         <div className="player-body__right-bottom flex flex-col items-center w-full">
           <div className="song-duration w-1/2 flex justify-between items-center mb-5">
